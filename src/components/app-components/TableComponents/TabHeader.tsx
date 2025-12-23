@@ -10,7 +10,7 @@ export default function TabHeader({ name, number }: TabProps) {
             <TabTitle name={name} />
 
             <div className="flex items-center gap-4">
-                <div className="flex items-center border border-border rounded-full py-1 px-2 gap-2 bg-secondary/20">
+                <div className="flex items-center border border-border rounded-full py-0 px-2 gap-2 bg-secondary/20">
                     <TabStats number={number} />
                     <TabPresets />
                 </div>
