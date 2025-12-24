@@ -5,9 +5,9 @@ import { TabProps } from "./interface/types";
 
 export default function Tab({ name, number }: TabProps) {
     return (
-        <div className="border border-border rounded-md">
+        <div className="">
             <TabHeader name={name} number={number} />
-            <Table className="border border-border">
+            <Table className="">
                 {/* <TableHeader>
                 <TableRow>
                     <TableHead>Header 1</TableHead>
