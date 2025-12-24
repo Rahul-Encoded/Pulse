@@ -1,8 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
+import tradeReducer from './features/trade/tradeSlice'
 
 export const makeStore = () => {
     return configureStore({
-        reducer: {}
+        reducer: {
+            trade: tradeReducer,
+        }
     })
 }
 
