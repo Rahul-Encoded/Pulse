@@ -3,7 +3,7 @@ import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 
 const parameters = ["SLIPPAGE", "PRIORITY", "BRIBE"]
-const imageUrl = ["/coin.svg", "/gas.svg", "/man.svg"]
+const imageUrl = ["/man.svg", "/gas.svg", "/coin.svg"]
 
 export default function TradeParameterInput() {
     return (
@@ -11,7 +11,7 @@ export default function TradeParameterInput() {
             {parameters.map((parameter, index) => (
                 <div
                     key={parameter}
-                    className="flex flex-col border border-border/50 rounded-md overflow-hidden w-28 shrink-0"
+                    className="flex flex-col border border-border/50 rounded-md overflow-hidden w-full"
                 >
                     <div className="relative flex items-center justify-center h-8 bg-foreground/10">
                         <Input
@@ -26,10 +26,10 @@ export default function TradeParameterInput() {
                     <Separator className="bg-border/30" />
                     <div className="flex items-center justify-center h-8 bg-background gap-2">
                         <Image src={imageUrl[index]} alt="solanaLogo" width={12} height={12} />
-                        <p className="text-[10px] font-medium text-muted-foreground/80 tracking-widest">{parameter}</p>
+                        <p className="text-xs font-medium text-muted-foreground/80 tracking-widest">{parameter}</p>
                     </div>
                 </div>
             ))}
         </div>
     );
-}
+}   
