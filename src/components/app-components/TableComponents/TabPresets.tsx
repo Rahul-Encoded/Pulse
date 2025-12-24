@@ -28,7 +28,6 @@ export default function TabPresets() {
 
     const handleClick = (id: string) => {
         console.log(`Clicked ${id}`);
-        // Add custom logic here
         if (selectedPreset === id) openPopUp();
         else setSelectedPreset(id);
     };
