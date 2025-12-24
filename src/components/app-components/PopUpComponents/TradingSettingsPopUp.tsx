@@ -3,11 +3,7 @@
 import PopUpHeader from "./PopUpHeader";
 import Seperator from "../ComonComponents/Seperator";
 import PresetPopup from "./PresetPopup";
-
-interface TradingSettingsPopUpProps {
-    isPopUpOpen: boolean;
-    setIsPopUpOpen: (open: boolean) => void;
-}
+import { TradingSettingsPopUpProps } from "./interface/types";
 
 export default function TradingSettingsPopUp({ isPopUpOpen, setIsPopUpOpen }: TradingSettingsPopUpProps) {
     if (!isPopUpOpen) return null;
