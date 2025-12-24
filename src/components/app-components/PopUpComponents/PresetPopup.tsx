@@ -3,37 +3,78 @@ import { Button } from "@/components/ui/button";
 import TradeParameterInput from "./TradeParameterInput";
 import AutoFee from "./AutoFee";
 import MaxFee from "./MaxFee";
-import { InputGroup, InputGroupAddon, InputGroupInput, InputGroupText } from "@/components/ui/input-group";
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+  InputGroupText,
+} from "@/components/ui/input-group";
 import BuyOrSellTab from "./BuyOrSellTab";
 import MevMode from "./MevMode";
 import Seperator from "../ComonComponents/Seperator";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import { useState } from "react";
+import { TradeState } from "@/lib/interface/types";
+import {
+  setBribe,
+  setPriority,
+  setSlippage,
+} from "@/lib/features/trade/tradeSlice";
 
-export default function PresetPopup() {
+export default function PresetPopup({
+  setIsPopUpOpen,
+}: {
+  setIsPopUpOpen: (open: boolean) => void;
+}) {
+  const dispatch = useAppDispatch();
 
-    return (
-        <div className="flex flex-col gap-4 justify-center items-center text-xs">
+  const reduxValues = useAppSelector((state) => state.trade);
 
-            <BuyOrSellTab></BuyOrSellTab>
+  const [localValues, setLocalValues] = useState<TradeState>(reduxValues);
 
-            <TradeParameterInput />
+  const handleValueChange = (parameter: string, value: number) => {
+    setLocalValues((prev) => ({ ...prev, [parameter.toLowerCase()]: value }));
+  };
 
-            <div className="flex justify-between items-center w-full">
-                <AutoFee></AutoFee>
-                <MaxFee></MaxFee>
-            </div>
+  const handleContinue = () => {
+    dispatch(setSlippage(localValues.slippage));
+    dispatch(setPriority(localValues.priority));
+    dispatch(setBribe(localValues.bribe));
+    setIsPopUpOpen(false);
 
-            <MevMode></MevMode>
-            <InputGroup className="rounded-full">
-                <InputGroupInput className="!pl-1" placeholder="https://a...e.com"></InputGroupInput>
-                <InputGroupAddon>
-                    <InputGroupText>RPC</InputGroupText>
-                </InputGroupAddon>
-            </InputGroup>
+    console.log("Commited", localValues);
+  };
 
-            <Seperator className="w-[calc(100%+3rem)] -mx-6 my-2"></Seperator>
+  return (
+    <div className="flex flex-col gap-4 justify-center items-center text-xs">
+      <BuyOrSellTab></BuyOrSellTab>
 
-            <Button className="rounded-full bg-blue-700 text-background w-full">Continue</Button>
+      <TradeParameterInput values={localValues} onChange={handleValueChange} />
 
-        </div>
-    );
+      <div className="flex justify-between items-center w-full">
+        <AutoFee></AutoFee>
+        <MaxFee></MaxFee>
+      </div>
+
+      <MevMode></MevMode>
+      <InputGroup className="rounded-full">
+        <InputGroupInput
+          className="!pl-1"
+          placeholder="https://a...e.com"
+        ></InputGroupInput>
+        <InputGroupAddon>
+          <InputGroupText>RPC</InputGroupText>
+        </InputGroupAddon>
+      </InputGroup>
+
+      <Seperator className="w-[calc(100%+3rem)] -mx-6 my-2"></Seperator>
+
+      <Button
+        className="rounded-full bg-blue-700 text-background w-full"
+        onClick={handleContinue}
+      >
+        Continue
+      </Button>
+    </div>
+  );
 }
