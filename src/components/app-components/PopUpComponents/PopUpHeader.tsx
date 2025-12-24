@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { X } from "lucide-react"
-import PopUpHeaderProps from "./interface/types"
+import { PopUpHeaderProps } from "./interface/types"
 
 
 export default function PopUpHeader({ setIsPopUpOpen, title }: PopUpHeaderProps) {
