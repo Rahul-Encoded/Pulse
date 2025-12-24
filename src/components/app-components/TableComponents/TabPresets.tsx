@@ -11,6 +11,10 @@ import { cn } from "@/lib/utils";
 import { Dialog } from "@radix-ui/react-dialog";
 import { DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import PresetPopup from "../PopUpComponents/PresetPopup";
+import { X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import PopUpHeader from "../PopUpComponents/PopUpHeader";
+import Seperator from "../ComonComponents/Seperator";
 
 export default function TabPresets() {
     const [openMenu, setOpenMenu] = useState<string | undefined>(undefined);
@@ -71,14 +75,30 @@ export default function TabPresets() {
                 })}
             </Menubar>
 
-            <Dialog open={isPopUpOpen} onOpenChange={setIsPopUpOpen}>
-                <DialogContent className="sm:max-w-[425px]">
-                    <DialogHeader>
-                        <DialogTitle className="sr-only">Trading Settings</DialogTitle>
-                    </DialogHeader>
-                    <PresetPopup />
-                </DialogContent>
-            </Dialog>
+            {isPopUpOpen && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+                    {/* Backdrop */}
+                    <div
+                        className="fixed inset-0 bg-black/60 "
+                        onClick={() => setIsPopUpOpen(false)}
+                    />
+
+                    {/* Modal Content */}
+                    <div className="relative bg-background border border-border rounded-2xl w-full max-w-[400px] shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
+
+                        <div className="h-[1px] bg-white/10 w-full" />
+                        {/* Header */}
+                        <PopUpHeader setIsPopUpOpen={setIsPopUpOpen} title="Trading Settings" />
+
+                        <Seperator></Seperator>
+
+                        {/* Body */}
+                        <div className="p-6">
+                            <PresetPopup />
+                        </div>
+                    </div>
+                </div>
+            )}
         </>
     );
 }
