@@ -14,54 +14,88 @@ import MevMode from "./MevMode";
 import Seperator from "../ComonComponents/Seperator";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { useState } from "react";
-import { MevModeState, TradeState } from "@/lib/interface/types";
+import { PresetSettings } from "@/lib/interface/types";
 import {
-  setBribe,
-  setPriority,
-  setSlippage,
-} from "@/lib/features/trade/tradeSlice";
-import { setMevMode } from "@/lib/features/trade/mevModeSlice";
+  defaultPresetSettings,
+  updatePresetSettings,
+} from "@/lib/features/presets/presetsSlice";
 
 export default function PresetPopup({
+  presetId,
   setIsPopUpOpen,
 }: {
+  presetId: string;
   setIsPopUpOpen: (open: boolean) => void;
 }) {
   const dispatch = useAppDispatch();
 
-  const reduxValues = useAppSelector((state) => state.trade);
-  const reduxMevMode = useAppSelector((state) => state.mevMode);
+  const reduxSettings = useAppSelector(
+    (state) => state.presets.presets[presetId]
+  );
 
-  const [localValues, setLocalValues] = useState<TradeState>(reduxValues);
-  const [localMevMode, setLocalMevMode] = useState<MevModeState>(reduxMevMode);
+  {
+    /*
+    state.presets.presets[presetId]:
+    export const presetsSlice = createSlice({
+      name: "presets",
+      initialState,
+      reducers: {
+        updatePresetSettings: (
+          state,
+          action: PayloadAction<{ id: string; settings: PresetSettings }>
+        ) => {
+          const { id, settings } = action.payload;
+          state.presets[id] = settings;
+        },
+      },
+    });
+    */
+  }
+
+  const [localSettings, setLocalSettings] = useState<PresetSettings>(
+    reduxSettings || defaultPresetSettings
+  );
 
   const handleValueChange = (parameter: string, value: number) => {
-    setLocalValues((prev) => ({ ...prev, [parameter.toLowerCase()]: value }));
+    setLocalSettings((prev) => ({
+      ...prev,
+      [parameter.toLowerCase()]: value,
+    }));
   };
 
   const handleContinue = () => {
-    dispatch(setSlippage(localValues.slippage));
-    dispatch(setPriority(localValues.priority));
-    dispatch(setBribe(localValues.bribe));
-    dispatch(setMevMode(localMevMode.mevMode));
+    dispatch(
+      updatePresetSettings({
+        id: presetId,
+        settings: localSettings,
+      })
+    );
 
     setIsPopUpOpen(false);
 
-    console.log("Commited", localValues);
+    console.log("Commited", localSettings);
   };
 
   return (
     <div className="flex flex-col gap-4 justify-center items-center text-xs">
       <BuyOrSellTab></BuyOrSellTab>
 
-      <TradeParameterInput values={localValues} onChange={handleValueChange} />
+      <TradeParameterInput
+        values={localSettings}
+        onChange={handleValueChange}
+      />
 
       <div className="flex justify-between items-center w-full">
         <AutoFee></AutoFee>
         <MaxFee></MaxFee>
       </div>
 
-      <MevMode mevMode={localMevMode} setMevMode={setLocalMevMode}></MevMode>
+      <MevMode
+        mevMode={{ mevMode: localSettings.mevMode }}
+        setMevMode={(value) =>
+          setLocalSettings((prev) => ({ ...prev, mevMode: value.mevMode }))
+        }
+      ></MevMode>
       <InputGroup className="rounded-full">
         <InputGroupInput
           className="!pl-1"
