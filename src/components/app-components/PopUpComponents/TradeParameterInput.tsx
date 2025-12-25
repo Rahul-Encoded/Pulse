@@ -1,6 +1,6 @@
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import { TradeState } from "@/lib/interface/types";
+import { PresetSettings } from "@/lib/interface/types";
 import Image from "next/image";
 
 const parameters = ["SLIPPAGE", "PRIORITY", "BRIBE"];
@@ -10,7 +10,7 @@ export default function TradeParameterInput({
   values,
   onChange,
 }: {
-  values: TradeState;
+  values: PresetSettings;
   onChange: (parameter: string, value: number) => void;
 }) {
   const { slippage, priority, bribe } = values;
