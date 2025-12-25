@@ -91,9 +91,9 @@ export default function PresetPopup({
       </div>
 
       <MevMode
-        mevMode={{ mevMode: localSettings.mevMode }}
-        setMevMode={(value) =>
-          setLocalSettings((prev) => ({ ...prev, mevMode: value.mevMode }))
+        value={localSettings.mevMode}
+        onChange={(value) =>
+          setLocalSettings((prev) => ({ ...prev, mevMode: value }))
         }
       ></MevMode>
       <InputGroup className="rounded-full">
@@ -109,7 +109,7 @@ export default function PresetPopup({
       <Seperator className="w-[calc(100%+3rem)] -mx-6 my-2"></Seperator>
 
       <Button
-        className="rounded-full bg-blue-700 text-background w-full"
+        className="rounded-full bg-blue-700 text-background w-full hover:bg-blue-600"
         onClick={handleContinue}
       >
         Continue
