@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pulse - Next.js Trading Dashboard
 
-## Getting Started
+Pulse is a high-performance trading dashboard built with Next.js, styled with TailwindCSS, and powered by Redux-Toolkit for robust state management.
+
+## 📁 Project Structure
+
+This project follows a modular and scalable folder structure:
+
+```text
+src/
+├── app/                  # Next.js App Router (Pages, Layouts)
+├── components/           # UI Component Library
+│   ├── app-components/   # Feature-specific components
+│   │   ├── ComonComponents/
+│   │   ├── PopUpComponents/
+│   │   └── TableComponents/
+│   ├── ui/               # Shadcn Components
+│   └── next-components/
+├── lib/                  # Core Application Logic
+│   ├── features/         # Redux Slices (presets, etc.)
+│   ├── interface/        # TypeScript Definitions
+│   ├── hooks.ts          # Typed Redux Hooks
+│   ├── store.ts          # Root Store Configuration
+│   └── utils.ts          # Utility Functions
+```
+
+### 🧠 State Management (Redux-Toolkit)
+
+The application uses **Redux-Toolkit** to manage complex trading configurations, specifically focused on **Presets (P1, P2, P3)**.
+
+- **Modular Slices**: Logic is encapsulated in feature-based slices (e.g., `presetsSlice.ts`).
+- **Normalized Data**: Preset settings are stored in a map-like structure (`presets: Record<string, PresetSettings>`) to allow independent configuration for each preset ID.
+- **Unified Actions**: Settings are updated via unified actions like `updatePresetSettings`, ensuring consistency across the UI.
+- **Typed Hooks**: The app uses `useAppSelector` and `useAppDispatch` for type-safe state access and updates.
+
+## 🚀 Getting Started
 
 First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
