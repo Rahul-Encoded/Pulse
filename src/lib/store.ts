@@ -1,12 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import tradeReducer from "./features/trade/tradeSlice";
-import mevModeReducer from "./features/trade/mevModeSlice";
+import presetsReducer from "./features/presets/presetsSlice";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
-      trade: tradeReducer,
-      mevMode: mevModeReducer,
+      presets: presetsReducer,
     },
   });
 };
