@@ -6,7 +6,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import TabHeader from "./TableHeaderComponents/TabHeader";
-import TabRow from "./TabRow";
+import TabRow from "./TabRowComponents/TabRow";
 import { TabProps } from "./interface/types";
 
 export default function Tab({ name, number }: TabProps) {
@@ -21,7 +21,9 @@ export default function Tab({ name, number }: TabProps) {
                 </TableRow>
             </TableHeader> */}
         {/* No table header for now */}
-        <TableBody>{/* <TabRow props={props} /> */}</TableBody>
+        <TableBody>
+          <TabRow />
+        </TableBody>
       </Table>
     </div>
   );
