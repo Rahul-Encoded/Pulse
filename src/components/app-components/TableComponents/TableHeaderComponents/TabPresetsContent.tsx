@@ -1,7 +1,7 @@
 "use client";
 import { MenubarContent } from "@/components/ui/menubar";
 import { useAppSelector } from "@/lib/hooks";
-import { MenubarIconItem } from "../ComonComponents/MenubarItem";
+import { MenubarIconItem } from "../../ComonComponents/MenubarItem";
 
 export default function TabPresetsContent({ presetId }: { presetId: string }) {
   const settings = useAppSelector((state) => state.presets.presets[presetId]);

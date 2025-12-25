@@ -4,7 +4,7 @@ import { Menubar, MenubarMenu, MenubarTrigger } from "@/components/ui/menubar";
 import TabPresetsContent from "./TabPresetsContent";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import TradingSettingsPopUp from "../PopUpComponents/TradingSettingsPopUp";
+import TradingSettingsPopUp from "../../PopUpComponents/TradingSettingsPopUp";
 
 export default function TabPresets() {
   const [openMenu, setOpenMenu] = useState<string | undefined>(undefined);
