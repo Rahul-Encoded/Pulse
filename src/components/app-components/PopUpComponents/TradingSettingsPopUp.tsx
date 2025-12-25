@@ -6,6 +6,7 @@ import PresetPopup from "./PresetPopup";
 import { TradingSettingsPopUpProps } from "./interface/types";
 
 export default function TradingSettingsPopUp({
+  presetId,
   isPopUpOpen,
   setIsPopUpOpen,
 }: TradingSettingsPopUpProps) {
@@ -29,7 +30,7 @@ export default function TradingSettingsPopUp({
 
         {/* Body */}
         <div className="p-6">
-          <PresetPopup setIsPopUpOpen={setIsPopUpOpen} />
+          <PresetPopup presetId={presetId} setIsPopUpOpen={setIsPopUpOpen} />
         </div>
       </div>
     </div>
