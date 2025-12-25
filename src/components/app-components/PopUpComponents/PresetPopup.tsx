@@ -14,12 +14,13 @@ import MevMode from "./MevMode";
 import Seperator from "../ComonComponents/Seperator";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { useState } from "react";
-import { TradeState } from "@/lib/interface/types";
+import { MevModeState, TradeState } from "@/lib/interface/types";
 import {
   setBribe,
   setPriority,
   setSlippage,
 } from "@/lib/features/trade/tradeSlice";
+import { setMevMode } from "@/lib/features/trade/mevModeSlice";
 
 export default function PresetPopup({
   setIsPopUpOpen,
@@ -29,8 +30,10 @@ export default function PresetPopup({
   const dispatch = useAppDispatch();
 
   const reduxValues = useAppSelector((state) => state.trade);
+  const reduxMevMode = useAppSelector((state) => state.mevMode);
 
   const [localValues, setLocalValues] = useState<TradeState>(reduxValues);
+  const [localMevMode, setLocalMevMode] = useState<MevModeState>(reduxMevMode);
 
   const handleValueChange = (parameter: string, value: number) => {
     setLocalValues((prev) => ({ ...prev, [parameter.toLowerCase()]: value }));
@@ -40,6 +43,8 @@ export default function PresetPopup({
     dispatch(setSlippage(localValues.slippage));
     dispatch(setPriority(localValues.priority));
     dispatch(setBribe(localValues.bribe));
+    dispatch(setMevMode(localMevMode.mevMode));
+
     setIsPopUpOpen(false);
 
     console.log("Commited", localValues);
@@ -56,7 +61,7 @@ export default function PresetPopup({
         <MaxFee></MaxFee>
       </div>
 
-      <MevMode></MevMode>
+      <MevMode mevMode={localMevMode} setMevMode={setLocalMevMode}></MevMode>
       <InputGroup className="rounded-full">
         <InputGroupInput
           className="!pl-1"
