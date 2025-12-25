@@ -61,7 +61,7 @@ export default function TabPresets() {
                 {preset.label}
               </MenubarTrigger>
               <div onMouseLeave={() => setOpenMenu(undefined)}>
-                <TabPresetsContent />
+                <TabPresetsContent presetId={preset.id} />
               </div>
             </MenubarMenu>
           );
@@ -69,6 +69,7 @@ export default function TabPresets() {
       </Menubar>
 
       <TradingSettingsPopUp
+        presetId={selectedPreset || "P1"}
         isPopUpOpen={isPopUpOpen}
         setIsPopUpOpen={setIsPopUpOpen}
       />
