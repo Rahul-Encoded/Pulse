@@ -3,9 +3,13 @@ import { MenubarContent } from "@/components/ui/menubar";
 import { useAppSelector } from "@/lib/hooks";
 import { MenubarIconItem } from "../ComonComponents/MenubarItem";
 
-export default function TabPresetsContent() {
-  const { slippage, priority, bribe } = useAppSelector((state) => state.trade);
-  const { mevMode } = useAppSelector((state) => state.mevMode);
+export default function TabPresetsContent({ presetId }: { presetId: string }) {
+  const settings = useAppSelector((state) => state.presets.presets[presetId]);
+
+  if (!settings) return null;
+
+  const { slippage, priority, bribe, mevMode } = settings;
+
   const presetItems = [
     { label: `${slippage}%`, path: "man.svg" },
     { label: priority, path: "gas.svg" },
