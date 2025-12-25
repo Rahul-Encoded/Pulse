@@ -1,19 +1,28 @@
 "use client";
-import {
-  MenubarContent,
-  MenubarItem,
-  MenubarSeparator,
-} from "@/components/ui/menubar";
+import { MenubarContent } from "@/components/ui/menubar";
 import { useAppSelector } from "@/lib/hooks";
+import { MenubarIconItem } from "../ComonComponents/MenubarItem";
 
 export default function TabPresetsContent() {
   const { slippage, priority, bribe } = useAppSelector((state) => state.trade);
+  const { mevMode } = useAppSelector((state) => state.mevMode);
+  const presetItems = [
+    { label: `${slippage}%`, path: "man.svg" },
+    { label: priority, path: "gas.svg" },
+    { label: bribe, path: "coin.svg" },
+    { label: mevMode, path: "shield-double.svg" },
+  ];
   return (
     <MenubarContent className="min-w-[4rem]">
-      <MenubarItem className="text-xs py-1 px-2">{slippage}%</MenubarItem>
-      <MenubarItem className="text-xs py-1 px-2">{priority}</MenubarItem>
-      <MenubarItem className="text-xs py-1 px-2">{bribe}</MenubarItem>
-      <MenubarItem className="text-xs py-1 px-2">off</MenubarItem>
+      {presetItems.map((item, index) => (
+        <MenubarIconItem
+          key={index}
+          path={item.path}
+          className="text-muted-foreground"
+        >
+          {item.label}
+        </MenubarIconItem>
+      ))}
     </MenubarContent>
   );
 }
