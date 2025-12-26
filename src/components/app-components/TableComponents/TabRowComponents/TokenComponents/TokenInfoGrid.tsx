@@ -3,6 +3,7 @@
 import { Token } from "@/lib/interface/tokens";
 import { useEffect, useState } from "react";
 import TokenSocials from "./TokenSocials";
+import TokenHoldersInfo from "./TokenHoldersInfo";
 
 export default function TokenInfoGrid({ token }: { token: Token }) {
   const [elapsedTime, setElapsedTime] = useState("");
@@ -24,6 +25,7 @@ export default function TokenInfoGrid({ token }: { token: Token }) {
     <div className="flex flex-row flex-1 gap-1 justify-start items-center overflow-hidden">
       <span className="text-sm text-green-600">{elapsedTime}</span>
       <TokenSocials token={token} />
+      <TokenHoldersInfo token={token} />
     </div>
   );
 }
