@@ -1,5 +1,5 @@
 export interface TokenCapItemProps {
-  label: string;
+  label?: string;
   value: string | number;
   icon?: React.ReactNode;
   extra?: React.ReactNode;
