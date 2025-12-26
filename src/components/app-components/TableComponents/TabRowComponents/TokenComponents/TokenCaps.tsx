@@ -1,7 +1,7 @@
 import { Token } from "@/lib/interface/tokens";
 import { SentimentBar } from "./SentimentBar";
 import Image from "next/image";
-import TokenCapItem from "./TokenCapElements";
+import TokenCapItem from "./TokenCapItem";
 
 export default function TokenCaps({ token }: { token: Token }) {
   const mainItems = [
