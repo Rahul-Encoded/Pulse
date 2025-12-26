@@ -4,7 +4,7 @@ import { Token } from "@/lib/interface/tokens";
 import { memo, useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import TokenMedia from "./TokenComponents/TokenMedia";
-import TabRowName from "./TabRowName";
+import TabRowName from "./TokenComponents/TabRowName";
 import TokenCaps from "./TokenComponents/TokenCaps";
 import TokenInfoGrid from "./TokenComponents/TokenInfoGrid";
 
