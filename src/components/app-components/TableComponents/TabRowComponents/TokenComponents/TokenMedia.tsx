@@ -2,7 +2,7 @@ import { Token } from "@/lib/interface/tokens";
 import Image from "next/image";
 import { GenericTooltip } from "@/components/app-components/TableComponents/TabRowComponents/Tooltip/GenericTooltip";
 import { EyeOff, ChefHat } from "lucide-react";
-import ToolTipIcons from "./CommonComponents/ToolTipIcons";
+import ToolTipIcons from "../CommonComponents/ToolTipIcons";
 
 export default function TokenMedia({ token }: { token: Token }) {
   return (
