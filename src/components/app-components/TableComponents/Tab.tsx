@@ -60,11 +60,11 @@ export default function Tab({ name, number }: TabProps) {
                   key={token.address}
                   trigger={<TabRow token={token} />}
                   content={
-                    token.status3 === "Migrated" ? (
+                    token.status2 === "Migrating" ? (
                       <span
                         className={`text-xs text-foreground/80 text-${color}-400`}
                       >
-                        Migrated
+                        Migrating
                       </span>
                     ) : (
                       <span
