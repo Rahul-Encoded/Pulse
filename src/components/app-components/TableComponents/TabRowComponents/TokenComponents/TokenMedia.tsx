@@ -60,7 +60,7 @@ export default function TokenMedia({ token }: { token: Token }) {
             height={256}
           />
         }
-        contentClassName="w-48 h-64 overflow-hidden border border-border shadow-2xl p-1"
+        contentClassName="w-56 h-64 overflow-hidden border border-border shadow-2xl p-1"
         triggerClassName=""
       />
     </div>
