@@ -21,7 +21,7 @@ export default function Tab({ name, number }: TabProps) {
   }, [allTokens, name]);
 
   return (
-    <div className="bg-table">
+    <div className="bg-table h-full overflow-y-auto relative scrollbar-custom">
       <TabHeader name={name} number={number} />
       <Table className="">
         <TableBody>
