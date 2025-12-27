@@ -21,15 +21,19 @@ export default function Tab({ name, number }: TabProps) {
   }, [allTokens, name]);
 
   return (
-    <div className="bg-table h-full overflow-y-auto relative scrollbar-custom">
-      <TabHeader name={name} number={number} />
-      <Table className="">
-        <TableBody>
-          {filteredTokens.map((token) => (
-            <TabRow key={token.address} token={token} />
-          ))}
-        </TableBody>
-      </Table>
+    <div className="bg-table h-full flex flex-col min-h-0">
+      <div className="flex-shrink-0">
+        <TabHeader name={name} number={number} />
+      </div>
+      <div className="flex-1 min-h-0 overflow-y-auto scrollbar-custom">
+        <Table>
+          <TableBody>
+            {filteredTokens.map((token) => (
+              <TabRow key={token.address} token={token} />
+            ))}
+          </TableBody>
+        </Table>
+      </div>
     </div>
   );
 }
