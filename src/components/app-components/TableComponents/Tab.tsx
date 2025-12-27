@@ -36,11 +36,19 @@ export default function Tab({ name, number }: TabProps) {
                   key={token.address}
                   trigger={<TabRow token={token} />}
                   content={
-                    <span
-                      className={`text-xs text-foreground/80 text-${color}-400`}
-                    >
-                      Bonding Value: {token.bondingValue.toFixed(2)}%
-                    </span>
+                    token.status3 === "Migrated" ? (
+                      <span
+                        className={`text-xs text-foreground/80 text-${color}-400`}
+                      >
+                        Migrated
+                      </span>
+                    ) : (
+                      <span
+                        className={`text-xs text-foreground/80 text-${color}-400`}
+                      >
+                        Bonding Value: {token.bondingValue.toFixed(2)}%
+                      </span>
+                    )
                   }
                   side="top"
                 />
