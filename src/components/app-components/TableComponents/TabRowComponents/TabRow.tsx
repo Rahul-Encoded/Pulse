@@ -7,6 +7,7 @@ import TokenMedia from "./TokenComponents/TokenMedia";
 import TabRowName from "./TokenComponents/TabRowName";
 import TokenCaps from "./TokenComponents/TokenCaps";
 import TokenInfoGrid from "./TokenComponents/TokenInfoGrid";
+import TokenBadges from "./TokenComponents/TokenBadges";
 
 interface TabRowProps {
   token: Token;
@@ -23,6 +24,7 @@ const TabRow = memo(({ token }: TabRowProps) => {
             <div className="flex flex-col gap-1.5">
               <TabRowName token={token} />
               <TokenInfoGrid token={token} />
+              <TokenBadges token={token} />
             </div>
 
             <TokenCaps token={token} />
