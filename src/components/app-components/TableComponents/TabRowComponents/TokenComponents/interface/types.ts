@@ -1,9 +1,9 @@
 export interface TokenCapItemProps {
   label?: string;
-  value: string | number;
+  value?: string | number;
   icon?: React.ReactNode;
   extra?: React.ReactNode;
-  tooltip: string;
+  tooltip: React.ReactNode;
   className?: string;
 }
 
