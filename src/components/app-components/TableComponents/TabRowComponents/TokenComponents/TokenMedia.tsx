@@ -6,6 +6,7 @@ import ToolTipIcons from "../CommonComponents/ToolTipIcons";
 import truncateAddress from "./utils/truncateAddress";
 import { toast } from "sonner";
 import Toaster from "@/components/app-components/ComonComponents/Toaster";
+import AnimatedBorder from "./AnimatedBorder";
 
 export default function TokenMedia({ token }: { token: Token }) {
   return (
@@ -46,13 +47,15 @@ export default function TokenMedia({ token }: { token: Token }) {
               ]}
             />
             <div className="flex flex-col items-center">
-              <Image
-                src={token.imageUrl}
-                alt={token.name}
-                width={100}
-                height={100}
-                className="cursor-pointer rounded-lg border border-border transition-all duration-300 group-hover:border-border"
-              />
+              <AnimatedBorder token={token}>
+                <Image
+                  src={token.imageUrl}
+                  alt={token.name}
+                  width={100}
+                  height={100}
+                  className="cursor-pointer rounded-lg border border-border transition-all duration-300 group-hover:border-border"
+                />
+              </AnimatedBorder>
               <span
                 className="text-xs text-foreground/80 hover:text-foreground cursor-pointer transition-colors"
                 onClick={() => {
