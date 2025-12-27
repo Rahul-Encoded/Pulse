@@ -20,14 +20,15 @@ const TabRow = memo(({ token }: TabRowProps) => {
         <div className="flex flex-row w-full gap-2 pl-2 pr-2 pt-2 pb-1 items-start">
           <TokenMedia token={token} />
 
-          <div className="flex flex-row flex-1 justify-between items-start">
-            <div className="flex flex-col flex-1 gap-1.5">
-              <TabRowName token={token} />
-              <TokenInfoGrid token={token} />
-              <TokenBadges token={token} />
+          <div className="flex flex-col flex-1 gap-1.5">
+            <div className="flex flex-row justify-between items-start w-full">
+              <div className="flex flex-col gap-1.5">
+                <TabRowName token={token} />
+                <TokenInfoGrid token={token} />
+              </div>
+              <TokenCaps token={token} />
             </div>
-
-            <TokenCaps token={token} />
+            <TokenBadges token={token} />
           </div>
         </div>
       </TableCell>
