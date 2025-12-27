@@ -65,7 +65,7 @@ export default function AnimatedBorder({
         className={cn(
           "absolute bottom-0 right-0 h-[1.5px] transition-all duration-600 ease-in-out origin-right",
           config.color,
-          isAnimating ? "w-full opacity-100" : "w-0 opacity-0"
+          isAnimating ? "w-full opacity-100" : "w-full opacity-40"
         )}
         style={{ transitionDelay: isAnimating ? "0ms" : "1800ms" }}
       />
@@ -75,7 +75,7 @@ export default function AnimatedBorder({
         className={cn(
           "absolute left-0 bottom-0 w-[1.5px] transition-all duration-600 ease-in-out origin-bottom",
           config.color,
-          isAnimating ? "h-full opacity-100" : "h-0 opacity-0"
+          isAnimating ? "h-full opacity-100" : "h-full opacity-40"
         )}
         style={{ transitionDelay: isAnimating ? "600ms" : "1200ms" }}
       />
@@ -85,7 +85,7 @@ export default function AnimatedBorder({
         className={cn(
           "absolute top-0 left-0 h-[1.5px] transition-all duration-600 ease-in-out origin-left",
           config.color,
-          isAnimating ? "w-full opacity-100" : "w-0 opacity-0"
+          isAnimating ? "w-full opacity-100" : "w-full opacity-40"
         )}
         style={{ transitionDelay: isAnimating ? "1200ms" : "600ms" }}
       />
@@ -95,7 +95,7 @@ export default function AnimatedBorder({
         className={cn(
           "absolute right-0 top-0 w-[1.5px] transition-all duration-600 ease-in-out origin-bottom",
           config.color,
-          isAnimating ? "h-full opacity-100" : "h-0 opacity-0"
+          isAnimating ? "h-full opacity-100" : "h-full opacity-40"
         )}
         style={{ transitionDelay: isAnimating ? "1800ms" : "0ms" }}
       />
