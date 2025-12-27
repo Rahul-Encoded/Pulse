@@ -17,3 +17,8 @@ export interface SocialIconProps
   alt: string;
   link: string;
 }
+
+export interface AnimatedBorderProps {
+  token: Token;
+  children: React.ReactNode;
+}
