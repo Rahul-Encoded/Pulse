@@ -33,18 +33,6 @@ export default function TokenHoldersInfo({ token }: { token: Token }) {
       ),
       tooltip: "Dev Migrations/Created",
     },
-    {
-      value: `${token.bundleHolding}`,
-      icon: (
-        <Image
-          src="/cubes-green.svg"
-          alt="Bundle Holding"
-          width={16}
-          height={16}
-        />
-      ),
-      tooltip: "Bundle Holding",
-    },
   ];
 
   return (
