@@ -2,6 +2,8 @@ import { Token } from "@/lib/interface/tokens";
 import { GenericTooltip } from "../Tooltip/GenericTooltip";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import { Zap } from "lucide-react";
 
 export default function TokenBadges({ token }: { token: Token }) {
   const mainItems = [
@@ -81,16 +83,26 @@ export default function TokenBadges({ token }: { token: Token }) {
     },
   ];
   return (
-    <div className="flex items-center gap-2">
-      {mainItems.map((item) => (
-        <GenericTooltip
-          key={item.tooltip}
-          trigger={item.extra}
-          content={<span>{item.tooltip}</span>}
-          contentClassName="text-xs bg-badges text-foreground"
-          side="top"
-        />
-      ))}
+    <div className="flex justify-between w-full">
+      <div className="flex items-center gap-2">
+        {mainItems.map((item) => (
+          <GenericTooltip
+            key={item.tooltip}
+            trigger={item.extra}
+            content={<span>{item.tooltip}</span>}
+            contentClassName="text-xs bg-badges text-foreground"
+            side="top"
+          />
+        ))}
+      </div>
+      <div>
+        <Button
+          variant="outline"
+          className="text-xs bg-blue-600 text-table rounded-full p-0 h-6 px-1 font-bold"
+        >
+          <Zap className="fill-table w-4"></Zap>0 SOL
+        </Button>
+      </div>
     </div>
   );
 }
