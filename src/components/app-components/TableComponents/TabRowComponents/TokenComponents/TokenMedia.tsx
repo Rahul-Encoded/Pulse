@@ -3,6 +3,7 @@ import Image from "next/image";
 import { GenericTooltip } from "@/components/app-components/TableComponents/TabRowComponents/Tooltip/GenericTooltip";
 import { EyeOff, ChefHat } from "lucide-react";
 import ToolTipIcons from "../CommonComponents/ToolTipIcons";
+import truncateAddress from "./utils/truncateAddress";
 
 export default function TokenMedia({ token }: { token: Token }) {
   return (
@@ -42,13 +43,18 @@ export default function TokenMedia({ token }: { token: Token }) {
                 />,
               ]}
             />
-            <Image
-              src={token.imageUrl}
-              alt={token.name}
-              width={100}
-              height={100}
-              className="cursor-pointer rounded-lg border border-border transition-all duration-300 group-hover:border-border"
-            />
+            <div className="flex flex-col items-center">
+              <Image
+                src={token.imageUrl}
+                alt={token.name}
+                width={100}
+                height={100}
+                className="cursor-pointer rounded-lg border border-border transition-all duration-300 group-hover:border-border"
+              />
+              <span className="text-xs text-foreground/80">
+                {truncateAddress(token.address, 6, 4)}
+              </span>
+            </div>
           </div>
         }
         content={
