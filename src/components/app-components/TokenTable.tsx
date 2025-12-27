@@ -3,13 +3,12 @@ import { TabProps } from "./TableComponents/interface/types";
 
 const names = ["New Pairs", "Final Stretch", "Migrated"];
 
-
 export default function TokenTable() {
-    return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-border border border-border rounded-lg overflow-hidden">
-            {names.map((name, index) => (
-                <Tab key={index} name={name} />
-            ))}
-        </div>
-    )
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1px] bg-border border border-border rounded-lg overflow-hidden">
+      {names.map((name, index) => (
+        <Tab key={index} name={name} />
+      ))}
+    </div>
+  );
 }
