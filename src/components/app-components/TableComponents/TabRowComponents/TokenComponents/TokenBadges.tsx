@@ -3,7 +3,8 @@ import { GenericTooltip } from "../Tooltip/GenericTooltip";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Zap } from "lucide-react";
+import { CircleAlert, Zap } from "lucide-react";
+import { toast } from "sonner";
 
 export default function TokenBadges({ token }: { token: Token }) {
   const mainItems = [
@@ -98,7 +99,15 @@ export default function TokenBadges({ token }: { token: Token }) {
       <div>
         <Button
           variant="outline"
-          className="text-xs bg-blue-600 text-table rounded-full p-0 h-6 px-1 font-bold"
+          className="text-xs bg-blue-600 hover:bg-blue-500 text-table hover:text-table rounded-full p-0 h-6 px-1 font-bold"
+          onClick={() => {
+            toast(
+              <div className="flex items-center gap-1">
+                <CircleAlert className="fill-red-400 w-4 stroke-table"></CircleAlert>
+                Minimum Buy amount is 0.0001 SOL
+              </div>
+            );
+          }}
         >
           <Zap className="fill-table w-4"></Zap>0 SOL
         </Button>
