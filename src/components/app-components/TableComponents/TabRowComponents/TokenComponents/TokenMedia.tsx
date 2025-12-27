@@ -45,8 +45,8 @@ export default function TokenMedia({ token }: { token: Token }) {
             <Image
               src={token.imageUrl}
               alt={token.name}
-              width={80}
-              height={80}
+              width={100}
+              height={100}
               className="cursor-pointer rounded-lg border border-border transition-all duration-300 group-hover:border-border"
             />
           </div>
