@@ -12,6 +12,7 @@ import { TabProps } from "./interface/types";
 import { useAppSelector } from "@/lib/hooks";
 import { selectAllTokens } from "@/lib/features/tokens/tokensSlice";
 import { useMemo } from "react";
+import { GenericTooltip } from "./TabRowComponents/Tooltip/GenericTooltip";
 
 export default function Tab({ name, number }: TabProps) {
   const allTokens = useAppSelector(selectAllTokens);
@@ -28,9 +29,23 @@ export default function Tab({ name, number }: TabProps) {
       <div className="flex-1 min-h-0 overflow-y-auto scrollbar-custom">
         <Table>
           <TableBody>
-            {filteredTokens.map((token) => (
-              <TabRow key={token.address} token={token} />
-            ))}
+            {filteredTokens.map((token) => {
+              const color = Math.random() > 0.5 ? "red" : "green";
+              return (
+                <GenericTooltip
+                  key={token.address}
+                  trigger={<TabRow token={token} />}
+                  content={
+                    <span
+                      className={`text-xs text-foreground/80 text-${color}-400`}
+                    >
+                      Bonding Value: {token.bondingValue.toFixed(2)}%
+                    </span>
+                  }
+                  side="top"
+                />
+              );
+            })}
           </TableBody>
         </Table>
       </div>
