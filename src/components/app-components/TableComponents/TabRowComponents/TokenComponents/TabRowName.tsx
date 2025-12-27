@@ -5,6 +5,7 @@ import { Token } from "@/lib/interface/tokens";
 import { Copy, Clipboard } from "lucide-react";
 import { toast } from "sonner";
 import { GenericTooltip } from "../Tooltip/GenericTooltip";
+import Toaster from "@/components/app-components/ComonComponents/Toaster";
 
 export default function TabRowName({ token }: { token: Token }) {
   return (
@@ -18,10 +19,11 @@ export default function TabRowName({ token }: { token: Token }) {
               e.stopPropagation();
               navigator.clipboard.writeText(token.address);
               toast(
-                <div className="flex items-center gap-2">
-                  <Clipboard className="text-blue-600" size={16} />
-                  <span>Address copied to clipboard</span>
-                </div>
+                <Toaster
+                  icon={<Clipboard className="text-blue-600" size={16} />}
+                  className="text-blue-600"
+                  message="Address copied to clipboard"
+                />
               );
             }}
           >

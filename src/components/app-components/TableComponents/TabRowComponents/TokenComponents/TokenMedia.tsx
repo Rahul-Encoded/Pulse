@@ -1,9 +1,11 @@
 import { Token } from "@/lib/interface/tokens";
 import Image from "next/image";
 import { GenericTooltip } from "@/components/app-components/TableComponents/TabRowComponents/Tooltip/GenericTooltip";
-import { EyeOff, ChefHat } from "lucide-react";
+import { EyeOff, ChefHat, Clipboard } from "lucide-react";
 import ToolTipIcons from "../CommonComponents/ToolTipIcons";
 import truncateAddress from "./utils/truncateAddress";
+import { toast } from "sonner";
+import Toaster from "@/components/app-components/ComonComponents/Toaster";
 
 export default function TokenMedia({ token }: { token: Token }) {
   return (
@@ -51,7 +53,19 @@ export default function TokenMedia({ token }: { token: Token }) {
                 height={100}
                 className="cursor-pointer rounded-lg border border-border transition-all duration-300 group-hover:border-border"
               />
-              <span className="text-xs text-foreground/80">
+              <span
+                className="text-xs text-foreground/80 hover:text-foreground cursor-pointer transition-colors"
+                onClick={() => {
+                  navigator.clipboard.writeText(token.address);
+                  toast(
+                    <Toaster
+                      icon={<Clipboard size={16} />}
+                      className="text-blue-600"
+                      message="Address copied to clipboard"
+                    />
+                  );
+                }}
+              >
                 {truncateAddress(token.address, 6, 4)}
               </span>
             </div>

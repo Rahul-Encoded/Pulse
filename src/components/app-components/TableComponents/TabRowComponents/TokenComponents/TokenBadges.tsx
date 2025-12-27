@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { CircleAlert, Zap } from "lucide-react";
 import { toast } from "sonner";
+import Toaster from "@/components/app-components/ComonComponents/Toaster";
 
 export default function TokenBadges({ token }: { token: Token }) {
   const mainItems = [
@@ -102,10 +103,13 @@ export default function TokenBadges({ token }: { token: Token }) {
           className="text-xs bg-blue-600 hover:bg-blue-500 text-table hover:text-table rounded-full p-0 h-6 px-1 font-bold"
           onClick={() => {
             toast(
-              <div className="flex items-center gap-1">
-                <CircleAlert className="fill-red-400 w-4 stroke-table"></CircleAlert>
-                Minimum Buy amount is 0.0001 SOL
-              </div>
+              <Toaster
+                icon={
+                  <CircleAlert className="fill-red-400 w-4 stroke-table"></CircleAlert>
+                }
+                className="text-red-400"
+                message="Minimum Buy amount is 0.0001 SOL"
+              />
             );
           }}
         >
