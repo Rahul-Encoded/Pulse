@@ -38,7 +38,7 @@ export default function TokenHoldersInfo({ token }: { token: Token }) {
   return (
     <div className="flex items-center gap-2">
       {mainItems.map((item) => (
-        <TokenCapItem key={item.value} {...item} className="text-xs" />
+        <TokenCapItem key={item.tooltip} {...item} className="text-xs" />
       ))}
     </div>
   );
