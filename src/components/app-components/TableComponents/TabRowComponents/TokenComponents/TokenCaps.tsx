@@ -36,7 +36,7 @@ export default function TokenCaps({ token }: { token: Token }) {
   ];
 
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col gap-1 justify-end">
       {mainItems.map((item) => (
         <TokenCapItem key={item.label} {...item} />
       ))}
