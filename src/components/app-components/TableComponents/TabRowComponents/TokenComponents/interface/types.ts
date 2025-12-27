@@ -1,3 +1,5 @@
+import { Token } from "@/lib/interface/tokens";
+
 export interface TokenCapItemProps {
   label?: string;
   value?: string | number;
