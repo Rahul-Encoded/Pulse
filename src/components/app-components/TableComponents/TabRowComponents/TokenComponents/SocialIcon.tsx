@@ -7,6 +7,7 @@ export const SocialIcon = forwardRef<HTMLDivElement, SocialIconProps>(
   ({ src, hoverSrc, alt, link, className, ...props }, ref) => {
     return (
       <div
+        {...props}
         ref={ref}
         className={cn(
           "relative w-4 h-4 cursor-pointer group transition-all duration-200",
@@ -16,7 +17,6 @@ export const SocialIcon = forwardRef<HTMLDivElement, SocialIconProps>(
           window.open(link, "_blank");
           props.onClick?.(e);
         }}
-        {...props}
       >
         {/* Base Icon */}
         <Image
