@@ -6,7 +6,7 @@ import TabFilterAction from "./TabFilterAction";
 
 export default function TabHeader({ name, number }: TabProps) {
   return (
-    <div className="flex items-center justify-between p-4 bg-table h-12 border border-border">
+    <div className="flex items-center justify-between p-4 bg-table h-12 border border-border sticky top-0 z-10">
       <TabTitle name={name} />
 
       <div className="flex items-center gap-4">
