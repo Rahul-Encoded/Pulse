@@ -21,7 +21,7 @@ const TabRow = memo(({ token }: TabRowProps) => {
           <TokenMedia token={token} />
 
           <div className="flex flex-row flex-1 justify-between items-start">
-            <div className="flex flex-col gap-1.5">
+            <div className="flex flex-col flex-1 gap-1.5">
               <TabRowName token={token} />
               <TokenInfoGrid token={token} />
               <TokenBadges token={token} />
@@ -34,71 +34,6 @@ const TabRow = memo(({ token }: TabRowProps) => {
     </TableRow>
   );
 });
-
-function Badge({
-  icon,
-  value,
-  isPositive,
-}: {
-  icon: string;
-  value: string;
-  isPositive: boolean;
-}) {
-  const [isHovered, setIsHovered] = useState(false);
-  const colorSuffix = isPositive ? "-green" : "-red";
-
-  return (
-    <div
-      className="flex flex-row gap-[4px] h-[24px] px-[6px] items-center rounded-full bg-backgroundSecondary border border-white/5 transition-all hover:border-white/20 cursor-help"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <img
-        src={`${icon}${colorSuffix}.svg`}
-        alt="badge"
-        className="w-[14px] h-[14px] object-contain"
-      />
-      <span
-        className={cn(
-          "text-[11px] font-semibold",
-          isPositive ? "text-primaryGreen" : "text-primaryRed"
-        )}
-      >
-        {value}
-      </span>
-    </div>
-  );
-}
-
-function SocialIcon({ icon }: { icon: string }) {
-  const [isHovered, setIsHovered] = useState(false);
-
-  // Mapping some remix names to your local filenames if they differ
-  const iconMap: Record<string, string> = {
-    x: "X",
-    telegram: "telegram",
-    world: "world",
-    search: "search",
-    pin: "pin",
-    feather: "feather",
-  };
-
-  const fileName = iconMap[icon.toLowerCase()] || icon;
-
-  return (
-    <div
-      className="cursor-pointer"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <img
-        src={isHovered ? `/${fileName}-blue.svg` : `/${fileName}.svg`}
-        alt={icon}
-        className="w-[16px] h-[16px] transition-all duration-150"
-      />
-    </div>
-  );
-}
 
 TabRow.displayName = "TabRow";
 export default TabRow;
