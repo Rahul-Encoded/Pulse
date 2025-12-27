@@ -11,7 +11,7 @@ import TabRow from "./TabRowComponents/TabRow";
 import { TabProps } from "./interface/types";
 import { useAppSelector } from "@/lib/hooks";
 import { selectAllTokens } from "@/lib/features/tokens/tokensSlice";
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { GenericTooltip } from "./TabRowComponents/Tooltip/GenericTooltip";
 
 export default function Tab({ name, number }: TabProps) {
@@ -21,6 +21,30 @@ export default function Tab({ name, number }: TabProps) {
     return allTokens.filter((token) => token.status1 === name);
   }, [allTokens, name]);
 
+  const [shuffledTokens, setShuffledTokens] = useState(filteredTokens);
+
+  // Sync layout with store updates
+  useEffect(() => {
+    setShuffledTokens(filteredTokens);
+  }, [filteredTokens]);
+
+  // Periodic randomization
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShuffledTokens((prev) => {
+        const arr = [...prev];
+        // Fisher-Yates shuffle
+        for (let i = arr.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+      });
+    }, 6000 + Math.random() * 2000); // Random interval between 6-8 seconds for variety
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="bg-table h-full flex flex-col min-h-0">
       <div className="flex-shrink-0">
@@ -29,7 +53,7 @@ export default function Tab({ name, number }: TabProps) {
       <div className="flex-1 min-h-0 overflow-y-auto scrollbar-custom">
         <Table>
           <TableBody>
-            {filteredTokens.map((token) => {
+            {shuffledTokens.map((token) => {
               const color = Math.random() > 0.5 ? "red" : "green";
               return (
                 <GenericTooltip
