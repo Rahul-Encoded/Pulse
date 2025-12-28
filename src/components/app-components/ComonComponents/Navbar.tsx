@@ -2,7 +2,6 @@
 
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { selectActiveTab, setActiveTab } from "@/lib/features/ui/uiSlice";
-import { selectAllTokens } from "@/lib/features/tokens/tokensSlice";
 import {
   List,
   ChevronDown,
@@ -16,7 +15,7 @@ import {
   Volume2,
   CirclePlus,
 } from "lucide-react";
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import CustomBadge from "./CustomBadge";
 import { GenericTooltip } from "../TableComponents/TabRowComponents/Tooltip/GenericTooltip";
@@ -27,12 +26,7 @@ import MobileDropDown from "../MobileComponents/MobileDropDown";
 export default function Navbar() {
   const dispatch = useAppDispatch();
   const activeTab = useAppSelector(selectActiveTab);
-  const allTokens = useAppSelector(selectAllTokens);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  const activeTokenCount = useMemo(() => {
-    return allTokens.filter((token) => token.status1 === activeTab).length;
-  }, [allTokens, activeTab]);
 
   const tabs = ["New Pairs", "Final Stretch", "Migrated"];
 
