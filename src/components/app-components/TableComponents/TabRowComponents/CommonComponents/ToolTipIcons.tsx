@@ -6,7 +6,7 @@ export default function ToolTipIcons({
   elements,
 }: ToolTipIconsProps) {
   return (
-    <div className="absolute left-0 top-0 flex flex-col gap-1.5 z-10 opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-1 group-hover:translate-x-0">
+    <div className="absolute left-0 top-0 flex flex-col gap-1.5 z-20 opacity-0 group-hover:opacity-100 transition-all duration-300 -translate-x-1 group-hover:translate-x-0">
       {elements &&
         elements.map((element, index) => (
           <div
