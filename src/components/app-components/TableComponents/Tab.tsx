@@ -1,13 +1,8 @@
 "use client";
-import {
-  Table,
-  TableBody,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
+import { Table, TableBody } from "@/components/ui/table";
 import TabHeader from "./TableHeaderComponents/TabHeader";
 import TabRow from "./TabRowComponents/TabRow";
+import TabRowSkeleton from "./TabRowComponents/Skeletons/TabRowSkeleton";
 import { TabProps } from "./interface/types";
 import { useAppSelector } from "@/lib/hooks";
 import { selectAllTokens } from "@/lib/features/tokens/tokensSlice";
@@ -22,6 +17,15 @@ export default function Tab({ name, number }: TabProps) {
   }, [allTokens, name]);
 
   const [shuffledTokens, setShuffledTokens] = useState(filteredTokens);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Simulate loading
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Sync layout with store updates
   useEffect(() => {
@@ -53,31 +57,35 @@ export default function Tab({ name, number }: TabProps) {
       <div className="flex-1 min-h-0 overflow-y-auto scrollbar-custom">
         <Table>
           <TableBody>
-            {shuffledTokens.map((token) => {
-              const color = Math.random() > 0.5 ? "red" : "green";
-              return (
-                <GenericTooltip
-                  key={token.address}
-                  trigger={<TabRow token={token} />}
-                  content={
-                    token.status2 === "Migrating" ? (
-                      <span
-                        className={`text-xs text-foreground/80 text-${color}-400`}
-                      >
-                        Migrating
-                      </span>
-                    ) : (
-                      <span
-                        className={`text-xs text-foreground/80 text-${color}-400`}
-                      >
-                        Bonding Value: {token.bondingValue.toFixed(2)}%
-                      </span>
-                    )
-                  }
-                  side="top"
-                />
-              );
-            })}
+            {isLoading
+              ? Array.from({ length: 10 }).map((_, i) => (
+                  <TabRowSkeleton key={i} />
+                ))
+              : shuffledTokens.map((token) => {
+                  const color = Math.random() > 0.5 ? "red" : "green";
+                  return (
+                    <GenericTooltip
+                      key={token.address}
+                      trigger={<TabRow token={token} />}
+                      content={
+                        token.status2 === "Migrating" ? (
+                          <span
+                            className={`text-xs text-foreground/80 text-${color}-400`}
+                          >
+                            Migrating
+                          </span>
+                        ) : (
+                          <span
+                            className={`text-xs text-foreground/80 text-${color}-400`}
+                          >
+                            Bonding Value: {token.bondingValue.toFixed(2)}%
+                          </span>
+                        )
+                      }
+                      side="top"
+                    />
+                  );
+                })}
           </TableBody>
         </Table>
       </div>
