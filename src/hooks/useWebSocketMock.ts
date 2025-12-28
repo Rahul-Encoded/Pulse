@@ -50,11 +50,18 @@ export const useWebSocketMock = () => {
               const token = state.tokens.entities[randomId];
 
               if (token) {
-                // Randomly fluctuate Market Cap, Volume, and Transactions
+                // Randomly fluctuate all numerical values
                 const mcDelta =
                   (Math.random() > 0.5 ? 1 : -1) * (Math.random() * 50);
                 const volDelta = Math.random() * 100;
-                const isBuy = Math.random() > 0.4; // 60% chance of a buy
+                const isBuy = Math.random() > 0.4;
+
+                // Holding percentages fluctuation
+                const fluctuatePercent = (val: number) =>
+                  Math.min(
+                    100,
+                    Math.max(0, val + (Math.random() > 0.5 ? 0.05 : -0.05))
+                  );
 
                 updates.push({
                   id: randomId,
@@ -65,11 +72,60 @@ export const useWebSocketMock = () => {
                       buys: token.transactions.buys + (isBuy ? 1 : 0),
                       sells: token.transactions.sells + (!isBuy ? 1 : 0),
                     },
-                    // Bonding value slowly creeps up
                     bondingValue: Math.min(
                       100,
                       token.bondingValue + Math.random() * 0.1
                     ),
+                    globalFees: parseFloat(
+                      Math.max(
+                        0,
+                        token.globalFees +
+                          Math.random() * 0.001 * (Math.random() > 0.5 ? 1 : -1)
+                      ).toFixed(3)
+                    ),
+
+                    // Holder metrics (tend to increase)
+                    holdersCount:
+                      token.holdersCount + (Math.random() > 0.8 ? 1 : 0),
+                    proTradersCount:
+                      token.proTradersCount + (Math.random() > 0.95 ? 1 : 0),
+                    kolsCount: token.kolsCount + (Math.random() > 0.99 ? 1 : 0),
+                    devMigrationsCount:
+                      token.devMigrationsCount + (Math.random() > 0.9 ? 1 : 0),
+
+                    // Holdings
+                    bundleHolding: parseFloat(
+                      fluctuatePercent(token.bundleHolding).toFixed(2)
+                    ),
+                    insiderHolding: parseFloat(
+                      fluctuatePercent(token.insiderHolding).toFixed(2)
+                    ),
+                    sniperHolding: parseFloat(
+                      fluctuatePercent(token.sniperHolding).toFixed(2)
+                    ),
+                    devHolding: parseFloat(
+                      fluctuatePercent(token.devHolding).toFixed(2)
+                    ),
+
+                    // Bubble Map
+                    bubbleMapPercentage: parseFloat(
+                      fluctuatePercent(token.bubbleMapPercentage).toFixed(2)
+                    ),
+                    bubbleMapData: token.bubbleMapData.map((p) => ({
+                      ...p,
+                      x: Math.min(
+                        100,
+                        Math.max(0, p.x + (Math.random() * 0.4 - 0.2))
+                      ),
+                      y: Math.min(
+                        100,
+                        Math.max(0, p.y + (Math.random() * 0.4 - 0.2))
+                      ),
+                      r: Math.min(
+                        15,
+                        Math.max(1, p.r + (Math.random() * 0.2 - 0.1))
+                      ),
+                    })),
                   },
                 });
               }
