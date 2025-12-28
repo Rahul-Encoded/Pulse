@@ -93,16 +93,56 @@
 }
 
 @layer utilities {
-  .animate-border-fill {
-    stroke-dasharray: 400;
-    stroke-dashoffset: 400;
-    animation: border-fill 2s linear forwards;
+  @keyframes border-fill-h {
+    0% {
+      transform: scaleX(0);
+      opacity: 0.4;
+    }
+    15%,
+    85% {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scaleX(1);
+      opacity: 0.4;
+    }
   }
 
-  @keyframes border-fill {
-    to {
-      stroke-dashoffset: 0;
+  @keyframes border-fill-v {
+    0% {
+      transform: scaleY(0);
+      opacity: 0.4;
     }
+    15%,
+    85% {
+      transform: scaleY(1);
+      opacity: 1;
+    }
+    100% {
+      transform: scaleY(1);
+      opacity: 0.4;
+    }
+  }
+
+  .animate-border-bottom {
+    animation: border-fill-h 4s ease-in-out infinite;
+    transform-origin: right;
+  }
+  .animate-border-left {
+    animation: border-fill-v 4s ease-in-out infinite;
+    transform-origin: bottom;
+    animation-delay: 0.6s;
+  }
+  .animate-border-top {
+    animation: border-fill-h 4s ease-in-out infinite;
+    transform-origin: left;
+    animation-delay: 1.2s;
+  }
+  .animate-border-right {
+    animation: border-fill-v 4s ease-in-out infinite;
+    transform-origin: top;
+    animation-delay: 1.8s;
   }
 }
 
