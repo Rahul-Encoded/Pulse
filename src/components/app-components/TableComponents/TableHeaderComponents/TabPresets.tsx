@@ -9,7 +9,7 @@ import TradingSettingsPopUp from "../../PopUpComponents/TradingSettingsPopUp";
 export default function TabPresets() {
   const [openMenu, setOpenMenu] = useState<string | undefined>(undefined);
   const [selectedPreset, setSelectedPreset] = useState<string | undefined>(
-    undefined
+    "P1"
   );
   const [isPopUpOpen, setIsPopUpOpen] = useState<boolean>(false);
 
