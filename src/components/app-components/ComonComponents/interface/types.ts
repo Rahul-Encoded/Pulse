@@ -6,8 +6,8 @@ export interface MenubarIconItemProps {
 }
 
 export interface CustomBadgeProps extends React.HTMLAttributes<HTMLDivElement> {
-  icon1: React.ReactNode;
-  icon2: React.ReactNode;
+  icon1?: React.ReactNode;
+  icon2?: React.ReactNode;
   label?: string;
 }
 
