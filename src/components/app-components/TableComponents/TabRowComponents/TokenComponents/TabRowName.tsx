@@ -21,7 +21,7 @@ export default function TabRowName({ token }: { token: Token }) {
               toast(
                 <Toaster
                   icon={<Clipboard className="text-blue-600" size={16} />}
-                  className="text-blue-600"
+                  className=""
                   message="Address copied to clipboard"
                 />
               );

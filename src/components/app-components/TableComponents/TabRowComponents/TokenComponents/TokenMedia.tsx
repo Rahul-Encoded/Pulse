@@ -72,8 +72,8 @@ export default function TokenMedia({
                   navigator.clipboard.writeText(token.address);
                   toast(
                     <Toaster
-                      icon={<Clipboard size={16} />}
-                      className="text-blue-600"
+                      icon={<Clipboard size={16} className="text-blue-600" />}
+                      className=""
                       message="Address copied to clipboard"
                     />
                   );
