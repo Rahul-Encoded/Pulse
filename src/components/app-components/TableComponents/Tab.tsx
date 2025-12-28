@@ -47,7 +47,7 @@ export default function Tab({ name, number }: TabProps) {
 
   return (
     <div className="bg-table h-full flex flex-col min-h-0">
-      <div className="flex-shrink-0">
+      <div className="flex-shrink-0 hidden lg:block">
         <TabHeader name={name} number={number} />
       </div>
       <div className="flex-1 min-h-0 overflow-y-auto scrollbar-custom">
