@@ -8,3 +8,7 @@ export interface PresetSettings {
 export interface PresetsState {
   presets: Record<string, PresetSettings>;
 }
+
+export interface UiState {
+  activeTab: string;
+}
