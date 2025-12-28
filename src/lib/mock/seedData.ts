@@ -14,7 +14,7 @@ const REAL_TOKENS = [
     mc: 28000,
   },
   {
-    name: "The Blue Whale",
+    name: "Blue Whale",
     symbol: "BlueWhale",
     address: "HC78DbEf5MLZnmH42T5ttCMyWJWdimqaAC8eyt9pump",
     mc: 45000,
@@ -44,7 +44,7 @@ const REAL_TOKENS = [
     mc: 19000,
   },
   {
-    name: "Community mascot by REDBULL",
+    name: "Community mascot",
     symbol: "BOXIE",
     address: "FBaDgQfxyK6YsukFVKLvALG3VhEuDFvY1jF5gw4opump",
     mc: 32000,
@@ -62,8 +62,8 @@ const REAL_TOKENS = [
     mc: 156000,
   },
   {
-    name: "Millie Mogger Brown",
-    symbol: "MMB",
+    name: "Millie Mog",
+    symbol: "MM",
     address: "EJST2oyFVwmkAnuMhrwqwfJG3mYanXtwz1Pggd4bpump",
     mc: 89000,
   },
@@ -158,7 +158,7 @@ const REAL_TOKENS = [
     mc: 54000,
   },
   {
-    name: "The Great Onboarding",
+    name: "The Onboarding",
     symbol: "ONBOARD",
     address: "GRTVyKbsFKP8wn26QLyH9KaPcukMntiUUXkefTYbpump",
     mc: 110000,
@@ -176,7 +176,7 @@ const REAL_TOKENS = [
     mc: 82000,
   },
   {
-    name: "Most used words of 2025",
+    name: "Used words",
     symbol: "WORDS",
     address: "6xiXFxTWQrPWaoE6ndg1ttJevkKiJvuNBXK6Gks2pump",
     mc: 125000,
@@ -200,7 +200,7 @@ const REAL_TOKENS = [
     mc: 92000,
   },
   {
-    name: "Black And white",
+    name: "Black/white",
     symbol: "BlackWhite",
     address: "4fXZW4Cy8F1z6QCUrzmuEtvpskKGhSWpK6rBH5ZMpump",
     mc: 156000,
