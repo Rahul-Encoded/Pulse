@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import presetsReducer from "./features/presets/presetsSlice";
 import tokensReducer from "./features/tokens/tokensSlice";
+import uiReducer from "./features/ui/uiSlice";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       presets: presetsReducer,
       tokens: tokensReducer,
+      ui: uiReducer,
     },
   });
 };
