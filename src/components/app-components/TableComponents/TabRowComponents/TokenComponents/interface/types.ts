@@ -1,4 +1,4 @@
-import { Token } from "@/lib/interface/tokens";
+import { BubblePoint, Token } from "@/lib/interface/tokens";
 
 export interface TokenCapItemProps {
   label?: string;
@@ -23,4 +23,9 @@ export interface SocialIconProps
 export interface AnimatedBorderProps {
   token: Token;
   children: React.ReactNode;
+}
+
+export interface BubbleMapTooltipProps {
+  createdAt: number;
+  bubbleMapData: BubblePoint[];
 }
