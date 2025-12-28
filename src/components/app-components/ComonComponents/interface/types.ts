@@ -17,3 +17,8 @@ export interface WalletBadgeProps extends React.HTMLAttributes<HTMLDivElement> {
   icon2: React.ReactNode;
   value2?: string | number;
 }
+
+export interface NavTypeComponent {
+  icon: React.ReactNode;
+  tooltip: string;
+}
