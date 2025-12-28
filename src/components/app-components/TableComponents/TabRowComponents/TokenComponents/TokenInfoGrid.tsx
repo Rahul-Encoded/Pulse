@@ -22,7 +22,7 @@ export default function TokenInfoGrid({ token }: { token: Token }) {
   }, [token.createdAt]);
 
   return (
-    <div className="flex flex-row flex-1 gap-1 justify-start items-center overflow-hidden">
+    <div className="flex flex-row flex-1 gap-1 justify-start items-center overflow-hidden flex-wrap">
       <span className="text-sm text-green-600">{elapsedTime}</span>
       <TokenSocials token={token} />
       <TokenHoldersInfo token={token} />
