@@ -15,6 +15,8 @@ import {
 import { toast } from "sonner";
 import Toaster from "@/components/app-components/ComonComponents/Toaster";
 
+import BubbleMapTooltip from "./BubbleMapTooltip";
+
 export default function TokenBadges({ token }: { token: Token }) {
   const colors = ["text-red-400", "text-green-400"];
   const getRandomColor = () =>
@@ -33,6 +35,12 @@ export default function TokenBadges({ token }: { token: Token }) {
           </Badge>
         ),
         tooltip: "Bubble Map",
+        tooltipContent: (
+          <BubbleMapTooltip
+            createdAt={token.createdAt}
+            bubbleMapData={token.bubbleMapData}
+          />
+        ),
       },
       {
         extra: (
@@ -97,9 +105,9 @@ export default function TokenBadges({ token }: { token: Token }) {
           <GenericTooltip
             key={item.tooltip}
             trigger={item.extra}
-            content={<span>{item.tooltip}</span>}
-            contentClassName="text-xs bg-badges text-foreground"
-            side="top"
+            content={item.tooltipContent || <span>{item.tooltip}</span>}
+            contentClassName="bg-badges text-foreground p-0 border-none shadow-xl"
+            side="bottom"
           />
         ))}
       </div>
