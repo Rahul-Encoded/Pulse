@@ -9,13 +9,14 @@ import TokenCaps from "./TokenComponents/TokenCaps";
 import TokenInfoGrid from "./TokenComponents/TokenInfoGrid";
 import TokenBadges from "./TokenComponents/TokenBadges";
 
-interface TabRowProps extends React.HTMLAttributes<HTMLTableRowElement> {
+export interface TabRowProps extends React.HTMLAttributes<HTMLTableRowElement> {
   token: Token;
+  index: number;
 }
 
 const TabRow = memo(
   React.forwardRef<HTMLTableRowElement, TabRowProps>(
-    ({ token, className, ...props }, ref) => {
+    ({ token, index, className, ...props }, ref) => {
       return (
         <TableRow
           ref={ref}
@@ -27,7 +28,7 @@ const TabRow = memo(
         >
           <TableCell className="p-0">
             <div className="flex flex-row w-full gap-2 pl-2 pr-2 pt-0 pb-2 items-start">
-              <TokenMedia token={token} />
+              <TokenMedia token={token} index={index} />
 
               <div className="flex flex-col flex-1 gap-1">
                 <div className="flex flex-row justify-between items-start w-full">
