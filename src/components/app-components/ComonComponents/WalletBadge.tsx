@@ -1,13 +1,7 @@
 import React from "react";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-interface WalletBadgeProps extends React.HTMLAttributes<HTMLDivElement> {
-  icon1: React.ReactNode;
-  value1?: string | number;
-  icon2: React.ReactNode;
-  value2?: string | number;
-}
+import { WalletBadgeProps } from "./interface/types";
 
 const WalletBadge = React.forwardRef<HTMLDivElement, WalletBadgeProps>(
   ({ className, icon1, icon2, value1, value2, ...props }, ref) => {
