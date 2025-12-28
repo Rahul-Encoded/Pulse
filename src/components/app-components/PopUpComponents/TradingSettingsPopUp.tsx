@@ -1,5 +1,7 @@
 "use client";
 
+import { createPortal } from "react-dom";
+import { useEffect, useState } from "react";
 import PopUpHeader from "./PopUpHeader";
 import Seperator from "../ComonComponents/Seperator";
 import PresetPopup from "./PresetPopup";
@@ -10,10 +12,17 @@ export default function TradingSettingsPopUp({
   isPopUpOpen,
   setIsPopUpOpen,
 }: TradingSettingsPopUpProps) {
-  if (!isPopUpOpen) return null;
+  const [mounted, setMounted] = useState(false);
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+  useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
+
+  if (!isPopUpOpen || !mounted) return null;
+
+  return createPortal(
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       {/* Backdrop */}
       <div
         className="fixed inset-0 bg-black/60 "
@@ -33,6 +42,7 @@ export default function TradingSettingsPopUp({
           <PresetPopup presetId={presetId} setIsPopUpOpen={setIsPopUpOpen} />
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
