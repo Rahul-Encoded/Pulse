@@ -8,7 +8,14 @@ import { toast } from "sonner";
 import Toaster from "@/components/app-components/ComonComponents/Toaster";
 import AnimatedBorder from "./AnimatedBorder";
 
-export default function TokenMedia({ token }: { token: Token }) {
+export default function TokenMedia({
+  token,
+  index,
+}: {
+  token: Token;
+  index?: number;
+}) {
+  const isPriority = index !== undefined && index < 6;
   return (
     <div className="relative group w-fit">
       <GenericTooltip
@@ -55,6 +62,7 @@ export default function TokenMedia({ token }: { token: Token }) {
                   alt={token.name}
                   width={80}
                   height={80}
+                  priority={isPriority}
                   className="cursor-pointer rounded-lg border border-border transition-all duration-300 group-hover:border-border"
                 />
               </AnimatedBorder>
