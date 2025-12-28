@@ -2,7 +2,7 @@
 
 Pulse is a high-performance trading dashboard built with Next.js, styled with TailwindCSS, and powered by Redux-Toolkit for robust state management.
 
-## 🚀 Getting Started
+## Getting Started
 
 First, run the development server:
 
@@ -12,7 +12,7 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## 🛠️ Technical Stack
+## Technical Stack
 
 ### Core Technologies
 
@@ -54,7 +54,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - **Documented Logic**: Complex algorithms explained (Fisher-Yates shuffle, entity adapter)
 - **DRY Principles**: Reusable components, shared utilities, configuration arrays
 
-## 📱 Responsive Design (320px - ∞)
+## Responsive Design (320px - ∞)
 
 The application is **fully responsive** with carefully crafted layouts that adapt seamlessly from ultra-wide monitors down to 320px mobile devices.
 
@@ -62,13 +62,14 @@ The application is **fully responsive** with carefully crafted layouts that adap
 
 The layout uses **Tailwind's default breakpoints** with custom responsive patterns:
 
-```carousel
-![Desktop View - 3 Column Layout](public\Screenshot3.png)
-<!-- slide -->
-![Tablet View - Single Column](public\Screenshot2.png)
-<!-- slide -->
-![Mobile View - 320px Width](public\Screenshot1.png)
-```
+**Desktop View - 3 Column Layout**
+![Desktop View - 3 Column Layout](public/Screenshot1.png)
+
+**Tablet View - Single Column**
+![Tablet View - Single Column](public/Screenshot2.png)
+
+**Mobile View - 320px Width**
+![Mobile View - 320px Width](public/Screenshot3.png)
 
 ### Layout Adaptations
 
@@ -135,7 +136,7 @@ The layout uses **Tailwind's default breakpoints** with custom responsive patter
 - **Pre-allocated Space**: All dynamic content has placeholder states
 - **CSS Grid/Flexbox**: Prevents reflow during data loading
 
-## 🏛️ Separation of Concerns
+## Separation of Concerns
 
 The codebase follows strict **separation of concerns** with clear boundaries between different layers:
 
@@ -577,7 +578,7 @@ export function GenericTooltip({
 - **Consistency**: Centralized styling with override capabilities
 - **Type Safety**: Full TypeScript support with prop validation
 
-### 🔬 Atomic Component Examples
+### Atomic Component Examples
 
 #### 1. **TokenCapItem** - Atomic Metric Display
 
