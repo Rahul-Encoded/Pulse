@@ -4,7 +4,6 @@ import {
   TokenStatus2,
   TokenStatus3,
   ImageBorderColor,
-  SocialIcon,
 } from "../interface/tokens";
 
 const REAL_TOKENS = [

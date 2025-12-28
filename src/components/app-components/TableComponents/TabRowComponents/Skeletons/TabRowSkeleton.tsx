@@ -1,7 +1,6 @@
 "use client";
 import { TableCell, TableRow } from "@/components/ui/table";
 import React from "react";
-import { Skeleton } from "@/components/app-components/TableComponents/TabRowComponents/Skeletons/skeleton";
 import MediaSkeleton from "./MediaSkeleton";
 import NameSkeleton from "./NameSkeleton";
 import InfoGridSkeleton from "./InfoGridSkeleton";

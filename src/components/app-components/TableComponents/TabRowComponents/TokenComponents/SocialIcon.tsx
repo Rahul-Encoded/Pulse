@@ -13,7 +13,7 @@ export const SocialIcon = forwardRef<HTMLDivElement, SocialIconProps>(
           "relative w-4 h-4 cursor-pointer group transition-all duration-200",
           className
         )}
-        onClick={(e: any) => {
+        onClick={(e: React.MouseEvent<HTMLDivElement>) => {
           window.open(link, "_blank");
           props.onClick?.(e);
         }}

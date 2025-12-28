@@ -2,7 +2,6 @@ import React, { useMemo, useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { WandSparkles } from "lucide-react";
 import BubbleMap from "./BubbleMap";
-import { BubblePoint } from "@/lib/interface/tokens";
 import { BubbleMapTooltipProps } from "./interface/types";
 
 const BubbleMapTooltip: React.FC<BubbleMapTooltipProps> = ({

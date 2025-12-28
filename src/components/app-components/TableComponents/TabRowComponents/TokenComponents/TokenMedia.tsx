@@ -17,6 +17,7 @@ export default function TokenMedia({ token }: { token: Token }) {
             <ToolTipIcons
               elements={[
                 <GenericTooltip
+                  key="hide-token"
                   side="left"
                   trigger={
                     <EyeOff
@@ -31,6 +32,7 @@ export default function TokenMedia({ token }: { token: Token }) {
                   }
                 />,
                 <GenericTooltip
+                  key="blacklist-dev"
                   side="left"
                   trigger={
                     <ChefHat

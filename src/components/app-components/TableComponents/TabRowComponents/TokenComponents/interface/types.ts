@@ -11,7 +11,7 @@ export interface TokenCapItemProps {
 
 export interface SocialIconProps
   extends Omit<
-    React.ImgHTMLAttributes<HTMLImageElement>,
+    React.HTMLAttributes<HTMLDivElement>,
     "width" | "height" | "src" | "alt"
   > {
   src: string;

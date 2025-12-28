@@ -1,7 +1,7 @@
 "use client";
 import { TableCell, TableRow } from "@/components/ui/table";
 import { Token } from "@/lib/interface/tokens";
-import React, { memo, useEffect, useRef, useState } from "react";
+import React, { memo } from "react";
 import { cn } from "@/lib/utils";
 import TokenMedia from "./TokenComponents/TokenMedia";
 import TabRowName from "./TokenComponents/TabRowName";
