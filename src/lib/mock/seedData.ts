@@ -290,6 +290,10 @@ export function generateSeedTokens(): Token[] {
         x: getRandomInt(0, 100),
         y: getRandomInt(0, 100),
         r: getRandomInt(2, 10),
+        color: `rgba(${getRandomInt(0, 255)}, ${getRandomInt(
+          0,
+          255
+        )}, ${getRandomInt(0, 255)}, ${getRandomInt(0.6, 1)})`,
       })),
 
       socials: {

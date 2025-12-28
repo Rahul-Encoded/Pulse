@@ -13,6 +13,7 @@ export interface BubblePoint {
   x: number;
   y: number;
   r: number;
+  color: string;
 }
 
 export interface Token {
