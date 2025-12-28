@@ -19,11 +19,11 @@ export default function Tab({ name, number }: TabProps) {
   const [shuffledTokens, setShuffledTokens] = useState(filteredTokens);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Simulate loading
+  // Simulate loading (reduced for better UX)
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 1000);
+    }, 100);
     return () => clearTimeout(timer);
   }, []);
 
@@ -61,12 +61,12 @@ export default function Tab({ name, number }: TabProps) {
               ? Array.from({ length: 10 }).map((_, i) => (
                   <TabRowSkeleton key={i} />
                 ))
-              : shuffledTokens.map((token) => {
+              : shuffledTokens.map((token, index) => {
                   const color = Math.random() > 0.5 ? "red" : "green";
                   return (
                     <GenericTooltip
                       key={token.address}
-                      trigger={<TabRow token={token} />}
+                      trigger={<TabRow token={token} index={index} />}
                       content={
                         token.status2 === "Migrating" ? (
                           <span
